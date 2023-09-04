@@ -16,10 +16,10 @@ class BookDetailApiView(generics.RetrieveAPIView):
     queryset=Book.objects.all()
     serializer_class=BookSerializer
 
-# Function based view way
-@api_view(['GET'])
-def book_list_view(request, *args, **kwargs):
-    books = Book.objects.all()
-    serializer = BookSerializer(books, many=True)
-    
-    return Response(serializer.data)
+class BookDeleteApiView(generics.DestroyAPIView):
+    queryset=Book.objects.all()
+    serializer_class=BookSerializer
+
+class BookUpdateView(generics.UpdateAPIView):
+    queryset=Book.objects.all()
+    serializer_class=BookSerializer
